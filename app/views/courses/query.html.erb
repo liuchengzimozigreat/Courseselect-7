@@ -13,13 +13,17 @@
           <tr>
               <td>
               <%= form_tag(controller:"courses",action:"query",method: "post") do %> 
-              <%= text_field_tag(:courseName) %></td>
+              <%=label_tag(:courseName,"")%>
+              <%= text_field_tag(:courseName) %>
+              </td>
               <td>
-              <%= submit_tag ("查询")%></td>
+              <%= submit_tag ("查询")%>
+              </td>
               <% end %>
             </tr>
           <table class="table table-striped table-hover">
             <thead>
+              
 
             <tr>
               <th>课程编号</th>
@@ -38,6 +42,7 @@
 
             <% @course.each do |course| %>
                 <tr>
+
                   <td><%= course.course_code %></td>
                   <td><%= course.name %></td>
                   <td><%= course.course_time %>/<%= course.course_week %></td>
@@ -47,7 +52,6 @@
                   <td><%= course.teaching_type %></td>
                   <td><%= course.exam_type %></td>
                   <td><%= course.teacher.name %></td>
-                  <td><%= link_to "查看课程", check_course_url(course), class: 'btn-sm btn-info' %></td>
                   <td><%= link_to "加入课程", select_course_path(course), class: 'btn-sm btn-info' %></td>
 
                 </tr>
@@ -59,5 +63,3 @@
     </div>
   </div>
 </div>
-
-

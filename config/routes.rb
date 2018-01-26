@@ -23,9 +23,14 @@ Rails.application.routes.draw do
       get :quit
       get :open
       get :close
+      get :evaluate
+      get :check
     end
     collection do
       get :list
+      get :assess
+      post :query
+      post :analysis
     end
   end
 

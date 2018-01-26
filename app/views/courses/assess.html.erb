@@ -11,7 +11,7 @@
         <div class="panel-heading">
           <% if teacher_logged_in? %><h3 class="panel-title">授课列表</h3>
           <% end %>
-          <% if student_logged_in? %><h3 class="panel-title">已选课程</h3>
+          <% if student_logged_in? %><h3 class="panel-title">评估课程</h3>
           <% end %>
         </div>
 
@@ -21,23 +21,17 @@
             <tr>
               <th>课程编号</th>
               <th>课程名称</th>
-              <th>上课时间</th>
-              <% if teacher_logged_in? %><th>选课情况</th><% end %>
               <th>课时/学分</th>
               <th>考试方式</th>
               <th>主讲教师</th>
             </tr>
 
             <tbody>
-            <% sumcredits = 0 %>
             <% @course.each do |course| %>
-            <% sumcredits = sumcredits + course.credit[3].to_f + course.credit[5].to_f/10 %>
                 <tr>
 
                   <td><%= course.course_code %></td>
                   <td><%= course.name %></td>
-                  <td><%= course.course_time %>/<%= course.course_week %></td>
-                  <% if teacher_logged_in? %><td><%= course.student_num %>/<%=  course.limit_num %></td><% end %>
                   <td><%= course.credit %></td>
                   <td><%= course.exam_type %></td>
                   <td><%= course.teacher.name %></td>
@@ -51,28 +45,13 @@
                       <% end %>
                       <td><%= link_to "删除", course_path(course), :method => "delete", class: 'btn btn-xs btn-danger', :data => {confirm: '确定要删除此课程?'} %></td>
                   <% elsif student_logged_in? %>
-                      <td><%= link_to "查看", check_course_url(course), class: 'btn-sm btn-info' %></td>
-                      <td><%= link_to "删除", quit_course_path(course), class: 'btn-sm btn-danger' %></td>
+                     <td><%= link_to "评估", evaluate_course_url(course), class: 'btn-sm btn-danger' %></td>
                   <% end %>
                 </tr>
             <% end %>
-            
-            
             </tbody>
           </table>
-          
-          <% if student_logged_in? %><h3 class="panel-title">学分统计</h3>
-          <table class="table table-responsiver">
-            <tr>
-                  <td>总学分：<%= sumcredits %></td>
-            </tr>
-          </table>
-          <% end %>
 
         </div>
-        
       </div>
     </div>
-  </div>
-</div>
-

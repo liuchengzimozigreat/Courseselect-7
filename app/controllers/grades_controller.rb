@@ -5,6 +5,27 @@ class GradesController < ApplicationController
   def update
     @grade=Grade.find_by_id(params[:id])
     if @grade.update_attributes!(:grade => params[:grade][:grade])
+      if @grade.grade==100
+         @grade.gradepoint=5.0
+      elsif @grade.grade>=95
+         @grade.gradepoint=4.5
+      elsif @grade.grade>=90
+         @grade.gradepoint=4.0
+      elsif @grade.grade>=85
+         @grade.gradepoint=3.5
+      elsif @grade.grade>=80
+         @grade.gradepoint=3.0
+      elsif @grade.grade>=75
+         @grade.gradepoint=2.5
+      elsif @grade.grade>=70
+         @grade.gradepoint=2.0
+      elsif @grade.grade>=65
+         @grade.gradepoint=1.5
+      elsif @grade.grade>=60
+         @grade.gradepoint=1.0
+      else @grade.gradepoint=0
+      end
+      @grade.save
       flash={:success => "#{@grade.user.name} #{@grade.course.name}的成绩已成功修改为 #{@grade.grade}"}
     else
       flash={:danger => "上传失败.请重试"}

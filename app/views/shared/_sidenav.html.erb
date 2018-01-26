@@ -47,6 +47,12 @@
                   <span class="label label-info pull-right"><%= current_user.courses.length %></span>
               <% end %>
             </li>
+            <li class="list-group-item">
+              <%= link_to assess_courses_path do %>
+                  <span class="glyphicon glyphicon-chevron-right"></span> 课程评估
+                  <span class="label label-info pull-right"><%= current_user.courses.length %></span>
+              <% end %>
+            </li>
         <% end %>
 
       </ul>
