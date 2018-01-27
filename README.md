@@ -1,7 +1,7 @@
 # CourseSelect [![Build Status]
 
 
-小组id:7，成员：刘程、刘章杰、刘禹男([演示Demo戳这里]）(https://courseselect-test-wenqixiansheng.c9users.io/courses)<br>
+小组id:7，成员：刘程、刘章杰、刘禹男。演示Demo：(https://courseselect-test-wenqixiansheng.c9users.io/courses)<br>
 在之前的基础上增加的功能有:
 * 处理选课时间冲突
 * 控制选课人数
